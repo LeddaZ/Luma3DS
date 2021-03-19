@@ -11,14 +11,14 @@ SUBFOLDERS	:=	sysmodules arm11 arm9 k11_extension
 
 all:		boot.firm
 
-release:	$(NAME)$(REVISION).zip
+release:	$(NAME)$(REVISION)-3gx.zip
 
 clean:
 	@$(foreach dir, $(SUBFOLDERS), $(MAKE) -C $(dir) clean &&) true
 	@rm -rf *.firm *.zip *.3dsx
 
 # boot.3dsx comes from https://github.com/fincs/new-hbmenu/releases
-$(NAME)$(REVISION).zip:	boot.firm boot.3dsx
+$(NAME)$(REVISION)-3gx.zip:	boot.firm boot.3dsx
 	@zip -r $@ $^ -x "*.DS_Store*" "*__MACOSX*"
 
 boot.firm:	$(SUBFOLDERS)
