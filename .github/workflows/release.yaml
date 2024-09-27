@@ -1,0 +1,35 @@
+name: Release CI
+
+on:
+  release:
+    types: [published]
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build boot.firm
+    uses: ./.github/workflows/build.yaml
+  publish_release:
+    name: Publish release archive
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      VERSTRING: ${{ needs.build.outputs.VERSTRING }}
+    steps:
+    - name: Download and extract hbmenu.zip
+      run: curl -sSfL $(shell curl -s https://api.github.com/repos/LeddaZ/3ds-hbmenu/releases/latest | grep 'browser_' | cut -d\" -f4) -o hbmenu.zip && unzip hbmenu.zip
+    - name: Download build artifact from previous job
+      uses: actions/download-artifact@v4
+      with:
+        name: Luma3DS-${{ env.VERSTRING }}
+    - name: Bundle release archive
+      run: zip "Luma3DS-$VERSTRING.zip" -r config boot.firm boot.3dsx
+    - name: Publish release archive
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: latest
+        files: "./Luma3DS-${{ env.VERSTRING }}.zip"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
