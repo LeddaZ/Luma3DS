@@ -20,7 +20,7 @@ jobs:
       VERSTRING: ${{ needs.build.outputs.VERSTRING }}
     steps:
     - name: Download and extract hbmenu.zip
-      run: curl -sSfL $(shell curl -s https://api.github.com/repos/LeddaZ/3ds-hbmenu/releases/latest | grep 'browser_' | cut -d\" -f4) -o hbmenu.zip && unzip hbmenu.zip
+      run: curl -sSfL $(curl -s https://api.github.com/repos/LeddaZ/3ds-hbmenu/releases/latest | grep 'browser_' | cut -d\" -f4) -o hbmenu.zip && unzip hbmenu.zip
     - name: Download build artifact from previous job
       uses: actions/download-artifact@v4
       with:
