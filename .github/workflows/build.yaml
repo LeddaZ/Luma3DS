@@ -17,6 +17,7 @@ jobs:
       VERSTRING: ${{ steps.verstring.outputs.VERSTRING }}
     container:
       image: leddaz/devkitarm
+      options: --user 1001 # runner user, for git safedir
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
