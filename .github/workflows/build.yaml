@@ -16,7 +16,7 @@ jobs:
     outputs:
       VERSTRING: ${{ steps.verstring.outputs.VERSTRING }}
     container:
-      image: devkitpro/devkitarm
+      image: leddaz/devkitarm
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
         VERSTRING=$(git describe --tags --match "v[0-9]*" --abbrev=7 | sed 's/-[0-9]*-g/-/')
         echo "VERSTRING=$VERSTRING" | tee -a $GITHUB_OUTPUT
     - name: Get additional dependencies
-      run: apt install -y python3-venv && python3 -m venv .venv && .venv/bin/pip install -U git+https://github.com/TuxSH/firmtool.git && wget https://leddaz.github.io/files/makerom && chmod a+x makerom && mkdir -p $HOME/bin && cp makerom $HOME/bin && export PATH=$HOME/bin:$PATH
+      run: python3 -m venv .venv && .venv/bin/pip install -U git+https://github.com/TuxSH/firmtool.git
     - name: Build
       run: make -j$(nproc --all)
     - name: Publish boot.firm (only on manual run or release)
