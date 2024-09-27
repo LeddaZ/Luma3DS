@@ -30,7 +30,7 @@ clean:
 	@$(foreach dir, $(SUBFOLDERS), $(MAKE) -C $(dir) clean &&) true
 	@rm -rf *.firm *.zip *.3dsx
 
-# boot.3dsx comes from https://github.com/fincs/new-hbmenu/releases
+# boot.3dsx comes from https://github.com/LeddaZ/3ds-hbmenu/releases
 $(NAME)$(REVISION).zip:	hbmenu.zip boot.firm
 	@cp $< $@
 	@zip $@ boot.firm -x "*.DS_Store*" "*__MACOSX*"
@@ -41,7 +41,7 @@ boot.firm:	$(SUBFOLDERS)
 	@echo built... $(notdir $@)
 
 hbmenu.zip:
-	@curl -sSfL $(shell curl -s https://api.github.com/repos/devkitPro/3ds-hbmenu/releases/latest | grep 'browser_' | cut -d\" -f4) -o $@
+	@curl -sSfL $(shell curl -s https://api.github.com/repos/LeddaZ/3ds-hbmenu/releases/latest | grep 'browser_' | cut -d\" -f4) -o $@
 	@echo downloaded... $(notdir $@)
 
 $(SUBFOLDERS):
