@@ -33,7 +33,7 @@ jobs:
     - name: Get additional dependencies
       run: python3 -m venv .venv && .venv/bin/pip install -U git+https://github.com/TuxSH/firmtool.git
     - name: Build
-      run: source .venv/bin/activate && make -j$(nproc --all)
+      run: . .venv/bin/activate && make -j$(nproc --all)
     - name: Publish boot.firm (only on manual run or release)
       uses: actions/upload-artifact@v4
       with:
