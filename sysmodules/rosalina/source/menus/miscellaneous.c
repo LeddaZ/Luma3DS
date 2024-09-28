@@ -138,7 +138,7 @@ void MiscellaneousMenu_SwitchBoot3dsxTargetTitle(void)
     do
     {
         Draw_Lock();
-        Draw_DrawString(10, 10, COLOR_TITLE, "Miscellaneous options menu");
+        Draw_DrawString(10, 10, COLOR_YELLOW, "Miscellaneous options menu");
 
         if(R_SUCCEEDED(res))
             Draw_DrawString(10, 30, COLOR_WHITE, "Operation succeeded.");
@@ -164,7 +164,7 @@ void MiscellaneousMenu_ChangeMenuCombo(void)
     LumaConfig_ConvertComboToString(comboStrOrig, menuCombo);
 
     Draw_Lock();
-    Draw_DrawString(10, 10, COLOR_TITLE, "Miscellaneous options menu");
+    Draw_DrawString(10, 10, COLOR_YELLOW, "Miscellaneous options menu");
 
     posY = Draw_DrawFormattedString(10, 30, COLOR_WHITE, "The current menu combo is:  %s", comboStrOrig);
     posY = Draw_DrawString(10, posY + SPACING_Y, COLOR_WHITE, "Please enter the new combo:");
@@ -175,7 +175,7 @@ void MiscellaneousMenu_ChangeMenuCombo(void)
     do
     {
         Draw_Lock();
-        Draw_DrawString(10, 10, COLOR_TITLE, "Miscellaneous options menu");
+        Draw_DrawString(10, 10, COLOR_YELLOW, "Miscellaneous options menu");
 
         posY = Draw_DrawFormattedString(10, 30, COLOR_WHITE, "The current menu combo is:  %s", comboStrOrig);
         posY = Draw_DrawFormattedString(10, posY + SPACING_Y, COLOR_WHITE, "Please enter the new combo: %s", comboStr) + SPACING_Y;
@@ -231,7 +231,7 @@ void MiscellaneousMenu_InputRedirection(void)
     do
     {
         Draw_Lock();
-        Draw_DrawString(10, 10, COLOR_TITLE, "Miscellaneous options menu");
+        Draw_DrawString(10, 10, COLOR_YELLOW, "Miscellaneous options menu");
 
         if(!wasEnabled && cantStart)
             Draw_DrawString(10, 30, COLOR_WHITE, "Can't start the input redirection before the system\nhas finished loading.");
@@ -330,7 +330,7 @@ void MiscellaneousMenu_UpdateTimeDateNtp(void)
     do
     {
         Draw_Lock();
-        Draw_DrawString(10, 10, COLOR_TITLE, "Miscellaneous options menu");
+        Draw_DrawString(10, 10, COLOR_YELLOW, "Miscellaneous options menu");
 
         absOffset = utcOffset - 12;
         absOffset = absOffset < 0 ? -absOffset : absOffset;
@@ -375,7 +375,7 @@ void MiscellaneousMenu_UpdateTimeDateNtp(void)
     do
     {
         Draw_Lock();
-        Draw_DrawString(10, 10, COLOR_TITLE, "Miscellaneous options menu");
+        Draw_DrawString(10, 10, COLOR_YELLOW, "Miscellaneous options menu");
 
         absOffset = utcOffset;
         absOffset = absOffset < 0 ? -absOffset : absOffset;
@@ -405,7 +405,7 @@ void MiscellaneousMenu_NullifyUserTimeOffset(void)
     do
     {
         Draw_Lock();
-        Draw_DrawString(10, 10, COLOR_TITLE, "Miscellaneous options menu");
+        Draw_DrawString(10, 10, COLOR_YELLOW, "Miscellaneous options menu");
         if(R_SUCCEEDED(res))
             Draw_DrawString(10, 30, COLOR_WHITE, "Operation succeeded.\n\nPlease reboot to finalize the changes.");
         else
@@ -484,7 +484,7 @@ void MiscellaneousMenu_DumpDspFirm(void)
     do
     {
         Draw_Lock();
-        Draw_DrawString(10, 10, COLOR_TITLE, "Miscellaneous options menu");
+        Draw_DrawString(10, 10, COLOR_YELLOW, "Miscellaneous options menu");
         if(R_SUCCEEDED(res))
             Draw_DrawString(10, 30, COLOR_WHITE, "DSP firm. successfully written to /3ds/dspfirm.cdc\non the SD card.");
         else

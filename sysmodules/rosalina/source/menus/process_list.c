@@ -107,7 +107,7 @@ static void ProcessListMenu_DumpMemory(const char *name, void *start, u32 size)
 #define TRY(expr) if(R_FAILED(res = (expr))) goto end;
 
     Draw_Lock();
-    Draw_DrawString(10, 10, COLOR_TITLE, "Memory dump");
+    Draw_DrawString(10, 10, COLOR_YELLOW, "Memory dump");
     const char * wait_message = "Please wait, this may take a while...";
     Draw_DrawString(10, 30, COLOR_WHITE, wait_message);
     Draw_FlushFramebuffer();
@@ -195,7 +195,7 @@ end:
     do
     {
         Draw_Lock();
-        Draw_DrawString(10, 10, COLOR_TITLE, "Memory dump");
+        Draw_DrawString(10, 10, COLOR_YELLOW, "Memory dump");
         Draw_DrawFormattedString(10, 30, COLOR_WHITE, "%*s", strlen(wait_message), " ");
         if(R_FAILED(res))
         {
@@ -403,7 +403,7 @@ static void ProcessListMenu_MemoryViewer(const ProcessInfo *info)
             void drawMenu(void)
             {
                 Draw_Lock();
-                Draw_DrawString(10, 10, COLOR_TITLE, "Memory viewer");
+                Draw_DrawString(10, 10, COLOR_YELLOW, "Memory viewer");
 
                 // Instructions
                 const u32 instructionsY = 30;
@@ -453,7 +453,7 @@ static void ProcessListMenu_MemoryViewer(const ProcessInfo *info)
                     u32 y = viewerY + offset*SPACING_Y;
 
                     u32 address = row*BYTES_PER_ROW;
-                    Draw_DrawFormattedString(10, y, COLOR_TITLE, "%.8lx | ", address + ((menuMode == MENU_MODE_NORMAL) ? (u32)menus[MENU_MODE_NORMAL].buf : 0));
+                    Draw_DrawFormattedString(10, y, COLOR_YELLOW, "%.8lx | ", address + ((menuMode == MENU_MODE_NORMAL) ? (u32)menus[MENU_MODE_NORMAL].buf : 0));
 
                     for(int cursor = 0; cursor < BYTES_PER_ROW; cursor++, address++)
                     {
@@ -703,7 +703,7 @@ void RosalinaMenu_ProcessList(void)
         Draw_Lock();
         if(page != pagePrev)
             Draw_ClearFramebuffer();
-        Draw_DrawString(10, 10, COLOR_TITLE, "Process list");
+        Draw_DrawString(10, 10, COLOR_YELLOW, "Process list");
 
         if(gdbServer.super.running)
         {
@@ -721,7 +721,7 @@ void RosalinaMenu_ProcessList(void)
             ProcessListMenu_FormatInfoLine(buf, &infos[page * PROCESSES_PER_MENU_PAGE + i]);
 
             Draw_DrawString(30, 30 + i * SPACING_Y, COLOR_WHITE, buf);
-            Draw_DrawCharacter(10, 30 + i * SPACING_Y, COLOR_TITLE, page * PROCESSES_PER_MENU_PAGE + i == selected ? '>' : ' ');
+            Draw_DrawCharacter(10, 30 + i * SPACING_Y, COLOR_YELLOW, page * PROCESSES_PER_MENU_PAGE + i == selected ? '>' : ' ');
         }
 
         Draw_FlushFramebuffer();

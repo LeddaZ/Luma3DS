@@ -453,7 +453,7 @@ static void menuDraw(Menu *menu, u32 selected)
     else
         sprintf(versionString, "v%lu.%lu.%lu", GET_VERSION_MAJOR(version), GET_VERSION_MINOR(version), GET_VERSION_REVISION(version));
 
-    Draw_DrawString(10, 10, COLOR_TITLE, menu->title);
+    Draw_DrawString(10, 10, COLOR_YELLOW, menu->title);
     u32 numItems = menuCountItems(menu);
     u32 dispY = 0;
 
@@ -463,7 +463,7 @@ static void menuDraw(Menu *menu, u32 selected)
             continue;
 
         Draw_DrawString(30, 30 + dispY, COLOR_WHITE, menu->items[i].title);
-        Draw_DrawCharacter(10, 30 + dispY, COLOR_TITLE, i == selected ? '>' : ' ');
+        Draw_DrawCharacter(10, 30 + dispY, COLOR_YELLOW, i == selected ? '>' : ' ');
         dispY += SPACING_Y;
     }
 
@@ -498,9 +498,9 @@ static void menuDraw(Menu *menu, u32 selected)
         Draw_DrawFormattedString(SCREEN_BOT_WIDTH - 10 - SPACING_X * 19, SCREEN_BOT_HEIGHT - 20, COLOR_WHITE, "%19s", "");
 
     if(isRelease)
-        Draw_DrawFormattedString(10, SCREEN_BOT_HEIGHT - 20, COLOR_TITLE, "Luma3DS %s", versionString);
+        Draw_DrawFormattedString(10, SCREEN_BOT_HEIGHT - 20, COLOR_YELLOW, "Luma3DS %s", versionString);
     else
-        Draw_DrawFormattedString(10, SCREEN_BOT_HEIGHT - 20, COLOR_TITLE, "Luma3DS %s-%08lx", versionString, commitHash);
+        Draw_DrawFormattedString(10, SCREEN_BOT_HEIGHT - 20, COLOR_YELLOW, "Luma3DS %s-%08lx", versionString, commitHash);
 
     Draw_FlushFramebuffer();
 }

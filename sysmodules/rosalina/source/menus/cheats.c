@@ -2046,7 +2046,7 @@ void RosalinaMenu_Cheats(void)
         do
         {
             Draw_Lock();
-            Draw_DrawString(10, 10, COLOR_TITLE, "Cheats");
+            Draw_DrawString(10, 10, COLOR_YELLOW, "Cheats");
             if (titleId == 0)
             {
                 Draw_DrawString(10, 30, COLOR_WHITE, "No suitable title found");
@@ -2074,7 +2074,7 @@ void RosalinaMenu_Cheats(void)
             }
             if (R_SUCCEEDED(r))
             {
-                Draw_DrawFormattedString(10, 10, COLOR_TITLE, "Cheat list");
+                Draw_DrawFormattedString(10, 10, COLOR_YELLOW, "Cheat list");
 
                 for (s32 i = 0; i < CHEATS_PER_MENU_PAGE && page * CHEATS_PER_MENU_PAGE + i < cheatCount; i++)
                 {
@@ -2085,12 +2085,12 @@ void RosalinaMenu_Cheats(void)
                     sprintf(buf, "%s%s%s", checkbox, keyAct, cheats[j]->name);
 
                     Draw_DrawString(30, 30 + i * SPACING_Y, cheats[j]->valid ? COLOR_WHITE : COLOR_RED, buf);
-                    Draw_DrawCharacter(10, 30 + i * SPACING_Y, COLOR_TITLE, j == selected ? '>' : ' ');
+                    Draw_DrawCharacter(10, 30 + i * SPACING_Y, COLOR_YELLOW, j == selected ? '>' : ' ');
                 }
             }
             else
             {
-                Draw_DrawFormattedString(10, 10, COLOR_TITLE, "ERROR: %08lx", r);
+                Draw_DrawFormattedString(10, 10, COLOR_YELLOW, "ERROR: %08lx", r);
                 Draw_DrawFormattedString(10, 30, COLOR_RED, failureReason);
             }
             Draw_FlushFramebuffer();
