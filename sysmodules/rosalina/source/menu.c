@@ -40,7 +40,7 @@
 #include "menus/screen_filters.h"
 #include "shell.h"
 
-//#define ROSALINA_MENU_SELF_SCREENSHOT 1 // uncomment this to enable the feature
+#define ROSALINA_MENU_SELF_SCREENSHOT 1 // uncomment this to enable the feature
 
 u32 menuCombo = 0;
 bool isHidInitialized = false;
